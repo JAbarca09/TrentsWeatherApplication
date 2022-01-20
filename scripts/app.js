@@ -51,44 +51,52 @@ function getData() {
                 cityName: weatherData.city.name,
                 cityCountry: weatherData.city.country,
                 firstDay: [
-                    {firstDayTemp: weatherData.list[0].main.temp},
-                    {firstDayMin: weatherData.list[0].main.temp_min},
-                    {firstDayMax: weatherData.list[0].main.temp_max},
-                    {firstDaySunrise: weatherData.city.sunrise},
-                    {firstDaySunset: weatherData.city.sunset},
-                    {firstDayVisibility: weatherData.list[0].visibility},
-                    {firstDayWindSpeed: weatherData.list[0].wind.speed},
-                    {firstDayDescription: weatherData.list[0].weather[0].description},
-                    {firstDayPressure: weatherData.list[0].main.pressure},
-                    {firstDayHumidity: weatherData.list[0].main.humidity},
-                    {firstDayFeelsLike: weatherData.list[0].main.feels_like},
-                    {firstDayDate: weatherData.list[0].dt_txt}
+                    { firstDayTemp: weatherData.list[0].main.temp },
+                    { firstDayMin: weatherData.list[0].main.temp_min },
+                    { firstDayMax: weatherData.list[0].main.temp_max },
+                    { firstDaySunrise: weatherData.city.sunrise },
+                    { firstDaySunset: weatherData.city.sunset },
+                    { firstDayVisibility: weatherData.list[0].visibility },
+                    { firstDayWindSpeed: weatherData.list[0].wind.speed },
+                    { firstDayDescription: weatherData.list[0].weather[0].description },
+                    { firstDayPressure: weatherData.list[0].main.pressure },
+                    { firstDayHumidity: weatherData.list[0].main.humidity },
+                    { firstDayFeelsLike: weatherData.list[0].main.feels_like },
+                    { firstDayDate: weatherData.list[0].dt_txt }
                 ],
                 secondDay: [
-                    {secondDayMinTemp: weatherData.list[8].main.temp_min},
-                    {secondDayMaxTemp: weatherData.list[8].main.temp_max},
-                    {secondDayFeelsLike: weatherData.list[8].main.feels_like},
-                    {secondDayDate: weatherData.list[8].dt_txt}
+                    { secondDayMinTemp: weatherData.list[8].main.temp_min },
+                    { secondDayMaxTemp: weatherData.list[8].main.temp_max },
+                    { secondDayFeelsLike: weatherData.list[8].main.feels_like },
+                    { secondDayDate: weatherData.list[8].dt_txt }
                 ],
                 thirdDay: [
-                    {thirdDayMinTemp: weatherData.list[17].main.temp_min},
-                    {thirdDayMaxTemp: weatherData.list[17].main.temp_max},
-                    {thirdDayFeelsLike: weatherData.list[17].main.feels_like},
-                    {thirdDayDate: weatherData.list[17].dt_txt}
+                    { thirdDayMinTemp: weatherData.list[17].main.temp_min },
+                    { thirdDayMaxTemp: weatherData.list[17].main.temp_max },
+                    { thirdDayFeelsLike: weatherData.list[17].main.feels_like },
+                    { thirdDayDate: weatherData.list[17].dt_txt }
                 ],
                 fourthDay: [
-                    {forthDayMinTemp: weatherData.list[25].main.temp_min},
-                    {forthDayMaxTemp: weatherData.list[25].main.temp_max},
-                    {forthDayFeelsLike: weatherData.list[25].main.feels_like},
-                    {fourthDayDate: weatherData.list[25].dt_txt}
+                    { forthDayMinTemp: weatherData.list[25].main.temp_min },
+                    { forthDayMaxTemp: weatherData.list[25].main.temp_max },
+                    { forthDayFeelsLike: weatherData.list[25].main.feels_like },
+                    { fourthDayDate: weatherData.list[25].dt_txt }
                 ],
                 fifthDay: [
-                    {fifthDayMinTemp: weatherData.list[32].main.temp_min},
-                    {fifthDayMaxTemp: weatherData.list[32].main.temp_max},
-                    {fifthDayFeelsLike: weatherData.list[32].main.feels_like},
-                    {fifthDayDate: weatherData.list[32].dt_txt}
+                    { fifthDayMinTemp: weatherData.list[32].main.temp_min },
+                    { fifthDayMaxTemp: weatherData.list[32].main.temp_max },
+                    { fifthDayFeelsLike: weatherData.list[32].main.feels_like },
+                    { fifthDayDate: weatherData.list[32].dt_txt }
                 ]
             };
+
+            //I am missing the state from the api ("CA"), date in this current format (Saturday January 15th, 2022) and current time (11:58 AM) and converting unix sunrise
+            //and sunset time to PST time. 
+            let date1 = '';
+            date1 = weatherInfo.firstDay[11].firstDayDate;
+            let date1Arr = [];
+            date1Arr = date1.split(" ");
+            console.log(date1Arr[0]);
 
 
             //JT's example!
