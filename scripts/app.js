@@ -1,3 +1,9 @@
+//Jesse Abarca
+//1/19/22
+//Weather Sprint-Day2
+//Complete the structure of you files and get them connected: index page, scripts, images, css. In addition
+//Set up your GitHub branches and complete your Azure setup, provide a link and complete all your fetches!
+
 let weatherData = [];
 
 //tidy data will only contain the data that I need!
@@ -90,8 +96,8 @@ function getData() {
                 ]
             };
 
-            //I am missing the state from the api ("CA"), date in this current format (Saturday January 15th, 2022) and current time (11:58 AM) and converting unix sunrise
-            //and sunset time to PST time. 
+            //I am missing multiple things from the api, the state ("CA"), date in this current format, I have to make (Saturday January 15th, 2022) and current time (11:58 AM) and converting sunrise
+            //and sunset Unix or epoch time to PST time! Other than that everything else is connected! 
             let date1 = '';
             date1 = weatherInfo.firstDay[11].firstDayDate;
             let date1Arr = [];
