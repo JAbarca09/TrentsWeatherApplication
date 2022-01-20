@@ -14,19 +14,70 @@
 </head>
 <!--  °°°°° -->
 <body>
-  <div class="container-fluid backgroundImg ">
+  <div class="container-fluid backgroundImg">
     <div class="row">
-      <div class="col-3 mt-3">
-        <div class="starImg"></div>
+      <div class="col-1 mt-3">
+        <nav class="navbar navbar-light fixed-top">
+          <div class="container-fluid navBarSize justify-content-start">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas-header">
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <!-- <div class="starImg"></div> This has the picture of the star! -->
       </div>
-      <div class="col-6 mt-5 text-center">
+      <div class="col-10 mt-5 text-center">
         <!-- <input type="text" id="inputPassword5" class="col-form-control" aria-describedby="passwordHelpBlock" placeholder="Please Enter In A City..."> -->
         <input class="inputFieldTxt" type="text" placeholder="Please Enter In A City...">
         <button class="btnStyling" type="button">Search</button>
       </div>
-      <div class="col-3 mt-5 d-flex justify-content-start">
+      <div class="col-1 mt-5 d-flex justify-content-start">
         
       </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-2"></div>
+      <div class="col-8 d-flex justify-content-center">
+        <div class="card" style="width: 46rem;">
+          <div class="card-body">
+            <!-- <div class="row">
+              <div class="col-6"></div>
+              <div class="col-1 d-flex justify-content-end">
+                <img src="./images/Icon feather-star-smol.png" alt="Favorite star" width="15px" height="15px">
+              </div>
+            </div> -->
+            <div class="row">
+              <div class="col-7">
+                <h1 class="cardLrgTxt">Stockton, US</h1>
+              </div>
+              <div class="col-2">
+                <img src="./images/Icon weather-day-sunny-overcast.png" alt="Icon of the current weather!" width="65px" height="65px">
+              </div>
+              <div class="col-2 p-0">
+                <h1 class="cardLrgTemperature">71°F</h1>
+              </div>
+              <div class="col-1 p-0">
+                  <div class="col-1 p-0">
+                    <img src="./images/Icon feather-star-smol.png" alt="Favorite star" width="15px" height="15px">
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-2"></div>
     </div>
   </div>
   <!--End of the container-->
