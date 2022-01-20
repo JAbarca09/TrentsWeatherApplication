@@ -46,7 +46,7 @@ function getData() {
 
 
 
-            //Save our data into an object, the data that we will use!
+            //Save our data into an object to keep things neat!
             let weatherInfo = {
                 cityName: weatherData.city.name,
                 cityCountry: weatherData.city.country,
