@@ -104,7 +104,6 @@ function getData() {
             date1Arr = date1.split(" ");
             console.log(date1Arr[0]);
 
-
             //JT's example!
             // let obj = {
             //     cityName: weatherData.city.name;
@@ -113,5 +112,3 @@ function getData() {
 }
 
 getData();
-
-//I need code outside of the api to get the current date and time in JS like how we did in C# Unity!
