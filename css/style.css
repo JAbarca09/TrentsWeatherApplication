@@ -1,3 +1,49 @@
-.bgBlack{
-    background-color: black;
+.backgroundImg{
+    background-image: url(../images/hurricane-ridge-7.30.16-18-of-77.png);
+    position: bottom;
+    width: 100%;
+}
+
+.starImg{
+    background-image: url(../images/Icon\ feather-star.png);
+    width: 89px;
+    height: 85px;
+}
+
+input{
+    padding-top: 5px;
+    padding-left: 20px;
+    height: 50px;
+    width: 450px;
+}
+
+
+::placeholder{
+    font-family: 'Helvetica Neue','Segoe UI';
+    font-weight: 350;
+    font-size: 1.5rem;
+    color: #707070;
+}
+
+.inputFieldTxt{
+    font-family: 'Helvetica Neue','Segoe UI';
+    font-weight: 350;
+    font-size: 1.5rem;
+    color: #707070;
+    outline: none;
+}
+
+.btnStyling{
+    background-color: #332011;
+    width: 100px;
+    height: 50px;
+    font-family: 'Helvetica Neue','Segoe UI';
+    font-size: 1.5rem;
+    color: white;
+    border: black;
+}
+
+.btnStyling:hover{
+    background-color: #5B391E;
+
 }
