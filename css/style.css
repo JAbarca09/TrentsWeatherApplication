@@ -1,14 +1,15 @@
-/* .backgroundImg{
-    background-image: url("../images/hurricane-ridge-7.30.16-18-of-77.png");
-    background-size: cover;
-    position: cover;
-    height: 100vh;
-} */
-
 body{
     background-image: url("../images/hurricane-ridge-7.30.16-18-of-77.png");
-    
+    background-position: center;
+    height: 100%;
+    width: 100%;
 }
+
+/* .sunnyDay{
+    background-image: url("../images/Icon\ weather-day-sunny-overcast.png");
+    width:80px;
+    height: 80px;
+} */
 
 .starImg{
     background-image: url("../images/Icon\ feather-star.png");
@@ -102,7 +103,7 @@ input{
 
 .cardLrgTxt{
     font-family: 'Helvetica Neue','Segoe UI';
-    font-size: 4rem;
+    font-size: 3.7rem;
     color: #000000;
     opacity: 100% !important;
 
@@ -160,4 +161,20 @@ input{
     font-weight: 350;
     color: black;
     opacity: 100% !important;
+}
+
+hr{
+    margin-top: 0px;
+    margin-bottom: 15px !important;
+    width: 275px;
+    margin: auto;
+}
+
+.cityTxtInTheOffCanvas{
+    font-family: 'Helvetica Neue','Segoe UI';
+    font-size: 1.5rem;
+    color: black;
+    opacity: 100% !important;
+    margin-left: 50px;
+    
 }

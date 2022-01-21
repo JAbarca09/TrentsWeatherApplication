@@ -16,22 +16,31 @@
   <link rel="stylesheet" href="./css/style.css">
   <title>Weather Application!</title>
 </head>
+
 <body>
   <div class="container-fluid backgroundImg">
     <div class="row">
       <div class="col-2">
-        <div class="starImg btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"></div>
-        <!-- <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-          Link with href
-        </a> -->
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="starImg btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+          aria-controls="offcanvasExample"></div>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+          aria-labelledby="offcanvasExampleLabel">
           <div class="offcanvas-header p-0">
-            <div class="filledStarImg btn mx-2" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" ></div>
-            <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+            <div class="filledStarImg btn mx-2" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+              aria-label="Close"></div>
           </div>
           <div class="offcanvas-body">
-            <div>
-              Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+            <div id="injectHere">
+              <div>
+                <p class="cityTxtInTheOffCanvas marginBtmZero">Sacramento, CA</p>
+                <hr />
+              </div>
+              <p class="cityTxtInTheOffCanvas marginBtmZero">Stockton, CA</p>
+              <hr />
+              <p class="cityTxtInTheOffCanvas marginBtmZero">Modesto, CA</p>
+              <hr />
+              <p class="cityTxtInTheOffCanvas marginBtmZero">Lodi, CA</p>
+              <hr />
             </div>
             <div class="dropdown mt-3">
             </div>
@@ -39,8 +48,8 @@
         </div>
       </div>
       <div class="col-8 mt-4 text-center">
-        <input type="text" class="inputFieldTxt" placeholder="Please Enter In A City..."/>
-        <button class="btnStyling" type="button">Search</button>
+        <input type="text" class="inputFieldTxt" id="searchCityInputField" placeholder="Please Enter In A City..." />
+        <button class="btnStyling" id="searchBtn" type="button">Search</button>
       </div>
       <div class="col-2"></div>
     </div>
@@ -51,16 +60,17 @@
           <div class="card-body">
             <div class="row">
               <div class="col-7">
-                <h1 class="cardLrgTxt">Stockton, US</h1>
+                <h1 id="CityAndCountry" class="cardLrgTxt">Stockton, US</h1>
               </div>
               <div class="col-2">
-                <img src="./images/Icon weather-day-sunny-overcast.png" alt="Icon of the current weather!" width="65px" height="65px">
+                <img class="sunnyDay" src="./images/Icon weather-day-sunny-overcast.png"
+                  alt="Icon of the current weather!" width="65px" height="65px">
               </div>
               <div class="col-2 p-0">
-                <h1 class="cardLrgTemperature">73°F</h1>
+                <h1 id="day1Temperature" class="cardLrgTemperature">73°F</h1>
                 <div class="row">
                   <div class="col-12 p-0 mx-4">
-                    <h1 class="cardDescriptionTxt">MOSTLY SUNNY</h1>
+                    <h1 id="day1Description" class="cardDescriptionTxt">MOSTLY SUNNY</h1>
                   </div>
                 </div>
               </div>
@@ -74,16 +84,16 @@
             <div class="row">
               <!-- <div class="col-1"></div> -->
               <div class="col-2 d-flex justify-content-end">
-                <p class="CardTxtDatesAndTime">Saturday</p>
+                <p id="day1WeekDay" class="CardTxtDatesAndTime">Saturday</p>
               </div>
               <div class="col-3 p-0 d-flex justify-content-lg-center">
-                <p class="CardTxtDatesAndTime">January 15th,</p>
+                <p id="day1MonthAndDate" class="CardTxtDatesAndTime">January 15th,</p>
               </div>
               <div class="col-1 d-flex justify-content-center">
-                <p class="CardTxtDatesAndTime">2022</p>
+                <p id="day1Year" class="CardTxtDatesAndTime">2022</p>
               </div>
               <div class="col-3">
-                <p class="CardTxtDatesAndTime">11:58 AM</p>
+                <p id="currentTime" class="CardTxtDatesAndTime">11:58 AM</p>
               </div>
               <div class="col-3">
                 <div class="row text-center">
@@ -91,7 +101,7 @@
                     <p class="cardTxtSmol marginBtmZero">FEELS LIKE</p>
                   </div>
                   <div class="col-3 p-0 d-flex justify-content-lg-start mt-2">
-                    <p class="cardTxtSmol marginBtmZero">74°F </p>
+                    <p id="day1FeelsLike" class="cardTxtSmol marginBtmZero">74°F </p>
                   </div>
                 </div>
                 <div class="row">
@@ -99,13 +109,13 @@
                     <p class="cardTxtSmol">MIN:</p>
                   </div>
                   <div class="col-2 p-0 d-flex justify-content-start">
-                    <p class="cardTxtSmol">67</p>
+                    <p id="day1Min" class="cardTxtSmol">67</p>
                   </div>
                   <div class="col-4 p-0 text-center">
                     <p class="cardTxtSmol">MAX:</p>
                   </div>
                   <div class="col-2 p-0 d-flex justify-content-start">
-                    <p class="cardTxtSmol">75</p>
+                    <p id="day1Max" class="cardTxtSmol">75</p>
                   </div>
                 </div>
                 <!--End of the row-->
@@ -138,165 +148,172 @@
             </div>
             <div class="row">
               <div class="col-2 d-flex justify-content-center">
-                <p class="cardTxtSmol">65%</p>
+                <p id="day1Humidity" class="cardTxtSmol">65%</p>
               </div>
               <div class="col-2 p-0 d-flex justify-content-center">
-                <p class="cardTxtSmol">30.14 in</p>
+                <p id="day1Pressure" class="cardTxtSmol">30.14 in</p>
               </div>
               <div class="col-2 p-0 d-flex justify-content-center">
-                <p class="cardTxtSmol">10.2 mi</p>
+                <p id="day1Visibility" class="cardTxtSmol">10.2 mi</p>
               </div>
               <div class="col-2 p-0 mx-2 d-flex justify-content-start">
-                <p class="cardTxtSmol">4 mph</p>
+                <p id="day1Wind" class="cardTxtSmol">4 mph</p>
               </div>
-                <div class="col-3">
-                  <div class="row">
-                    <div class="col-6">
-                      <p class="cardTxtSmol">7:10 AM</p>
-                    </div>
-                    <div class="col-6 d-flex justify-content-end">
-                      <p class="cardTxtSmol">5:13 PM</p>
-                    </div>
+              <div class="col-3">
+                <div class="row">
+                  <div class="col-6">
+                    <p id="Day1Sunrise" class="cardTxtSmol">7:10 AM</p>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end">
+                    <p id="Day1Sunset" class="cardTxtSmol">5:13 PM</p>
                   </div>
                 </div>
-              </div><!--End of the row-->
-          </div><!--Card-body ends!-->
-        </div><!--Card outer div-->
-      </div><!--card col-8-->
-    </div><!--End of row-->
-    <div class="row justify-content-center mt-4"><!--Beginning of the row -->
-     <div class="col-2">
-      <div class="card smallerCardStyling" style="width: 13rem;">
-        <div class="card-body pb-1 pt-1">
-          <div class="row">
-            <div class="col-12 text-center">
-              <p class="smallerCardTitles">Sunday</p>
+              </div>
             </div>
+            <!--End of the row-->
           </div>
-          <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-              <img src="./images/Icon metro-weather.png" alt="weather icon" height="50px" width="50px">
+          <!--Card-body ends!-->
+        </div>
+        <!--Card outer div-->
+      </div>
+      <!--card col-8-->
+    </div>
+    <!--End of row-->
+    <div class="row justify-content-center mt-4">
+      <!--Beginning of the row -->
+      <div class="col-2">
+        <div class="card smallerCardStyling" style="width: 13rem;">
+          <div class="card-body pb-1 pt-1">
+            <div class="row">
+              <div class="col-12 text-center">
+                <p id="day2Day" class="smallerCardTitles">Sunday</p>
+              </div>
             </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-12 d-flex justify-content-center">
-              <p class="smallerCardTitles marginBtmZero">78°F</p>
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <img src="./images/Icon metro-weather.png" alt="weather icon" height="50px" width="50px">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-12 d-flex justify-content-center pb-0">
-              <p class="smallerCardTitles marginBtmZero">58°F</p>
+            <div class="row mt-3">
+              <div class="col-12 d-flex justify-content-center">
+                <p id="day2Max" class="smallerCardTitles marginBtmZero">78°F</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center pb-0">
+                <p id="day2Min" class="smallerCardTitles marginBtmZero">58°F</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-     </div>
-     <div class="col-2">
-      <div class="card smallerCardStyling" style="width: 13rem;">
-        <div class="card-body pb-1 pt-1">
-          <div class="row">
-            <div class="col-12 text-center">
-              <p class="smallerCardTitles">Monday</p>
+      <div class="col-2">
+        <div class="card smallerCardStyling" style="width: 13rem;">
+          <div class="card-body pb-1 pt-1">
+            <div class="row">
+              <div class="col-12 text-center">
+                <p id="day3Day" class="smallerCardTitles">Monday</p>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-              <img src="./images/Icon metro-weather.png" alt="weather icon" height="50px" width="50px">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <img src="./images/Icon metro-weather.png" alt="weather icon" height="50px" width="50px">
+              </div>
             </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-12 d-flex justify-content-center">
-              <p class="smallerCardTitles marginBtmZero">83°F</p>
+            <div class="row mt-3">
+              <div class="col-12 d-flex justify-content-center">
+                <p id="day3Max" class="smallerCardTitles marginBtmZero">83°F</p>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-              <p class="smallerCardTitles marginBtmZero">62°F</p>
-            </div>
-          </div>
-        </div>
-      </div>
-     </div>
-     <div class="col-2">
-      <div class="card smallerCardStyling" style="width: 13rem;">
-        <div class="card-body pb-1 pt-1">
-          <div class="row">
-            <div class="col-12 text-center">
-              <p class="smallerCardTitles">Tuesday</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-              <img src="./images/Icon metro-weather.png" alt="weather icon" height="50px" width="50px">
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-12 d-flex justify-content-center">
-              <p class="smallerCardTitles marginBtmZero">81°F</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-              <p class="smallerCardTitles marginBtmZero">60°F</p>
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <p id="day3Min" class="smallerCardTitles marginBtmZero">62°F</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-     </div>
-     <div class="col-2">
-      <div class="card smallerCardStyling" style="width: 13rem;">
-        <div class="card-body pb-1 pt-1">
-          <div class="row">
-            <div class="col-12 text-center">
-              <p class="smallerCardTitles">Wednesday</p>
+      <div class="col-2">
+        <div class="card smallerCardStyling" style="width: 13rem;">
+          <div class="card-body pb-1 pt-1">
+            <div class="row">
+              <div class="col-12 text-center">
+                <p id="day4Day" class="smallerCardTitles">Tuesday</p>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-              <img src="./images/Icon metro-weather.png" alt="weather icon" height="50px" width="50px">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <img src="./images/Icon metro-weather.png" alt="weather icon" height="50px" width="50px">
+              </div>
             </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-12 d-flex justify-content-center">
-              <p class="smallerCardTitles marginBtmZero">76°F</p>
+            <div class="row mt-3">
+              <div class="col-12 d-flex justify-content-center">
+                <p id="day4Max" class="smallerCardTitles marginBtmZero">81°F</p>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-              <p class="smallerCardTitles marginBtmZero">55°F</p>
-            </div>
-          </div>
-        </div>
-      </div>
-     </div>
-     <div class="col-2">
-      <div class="card smallerCardStyling" style="width: 13rem;">
-        <div class="card-body pb-1 pt-1">
-          <div class="row">
-            <div class="col-12 text-center">
-              <p class="smallerCardTitles">Thursday</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-              <img src="./images/Icon metro-weather.png" alt="weather icon" height="50px" width="50px">
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-12 d-flex justify-content-center">
-              <p class="smallerCardTitles marginBtmZero">79°F</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-              <p class="smallerCardTitles marginBtmZero">59°F</p>
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <p id="day4Min" class="smallerCardTitles marginBtmZero">60°F</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-     </div>
+      <div class="col-2">
+        <div class="card smallerCardStyling" style="width: 13rem;">
+          <div class="card-body pb-1 pt-1">
+            <div class="row">
+              <div class="col-12 text-center">
+                <p id="day5Day" class="smallerCardTitles">Wednesday</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <img src="./images/Icon metro-weather.png" alt="weather icon" height="50px" width="50px">
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-12 d-flex justify-content-center">
+                <p id="day5Max" class="smallerCardTitles marginBtmZero">76°F</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <p id="day5Min" class="smallerCardTitles marginBtmZero">55°F</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="card smallerCardStyling" style="width: 13rem;">
+          <div class="card-body pb-1 pt-1">
+            <div class="row">
+              <div class="col-12 text-center">
+                <p id="day6Day" class="smallerCardTitles">Thursday</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <img src="./images/Icon metro-weather.png" alt="weather icon" height="50px" width="50px">
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-12 d-flex justify-content-center">
+                <p id="day6Max" class="smallerCardTitles marginBtmZero">79°F</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <p id="day6Min" class="smallerCardTitles marginBtmZero">59°F</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div><!-- row ending div! -->
-  </div><!--End of the container-->
+  </div>
+  <!--End of the container-->
 
   <!-- Optional JavaScript; choose one of the two! -->
 
@@ -311,4 +328,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
 </body>
+
 </html>
