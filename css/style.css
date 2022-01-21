@@ -22,8 +22,20 @@ body{
     height: 85px;
 }
 
+.blackstarImg{
+    background-image: url("../images/Icon\ feather-star-smol.png");
+    width: 36px;
+    height: 35px;
+}
+
+.blackstarImg:checked{
+    background-image: url("../images/Icon\ feather-starfilledFavorited!.png");
+    width: 36px;
+    height: 35px;
+}
+
 .offcanvas{
-    transition: transform .1s ease-in-out;
+    transition: transform .3s ease-in-out;
 }
 
 input{

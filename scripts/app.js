@@ -1,8 +1,7 @@
 //Jesse Abarca
-//1/19/22
-//Weather Sprint-Day2
-//Complete the structure of you files and get them connected: index page, scripts, images, css. In addition
-//Set up your GitHub branches and complete your Azure setup, provide a link and complete all your fetches!
+//1/20/22
+//Weather Sprint-Day3
+//Submit your progress on the weather application, be around 75% done with your layout!
 
 let weatherData = [];
 import GetLocationData from "./geolocation.js";
