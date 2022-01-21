@@ -3,6 +3,10 @@
 //Weather Sprint-Day3
 //Submit your progress on the weather application, be around 75% done with your layout!
 
+let favoritesBtn = document.getElementById('favoritesBtn');
+
+
+
 let weatherData = [];
 import GetLocationData from "./geolocation.js";
 //tidy data will only contain the data that I need!
@@ -108,6 +112,20 @@ function getData() {
             //     cityName: weatherData.city.name;
             // }
         })
-}
+}//End of the function
+
+
+favoritesBtn.addEventListener('click', function () {
+    //if the button is clicked switch the favorite image with the other
+    if (favoritesBtn.className == "blackstarImg button") {
+        favoritesBtn.className = "blackstarFilled";
+
+    } else if (favoritesBtn.className == "blackstarFilled") {
+        favoritesBtn.className = "blackstarImg button";
+    }
+});
+
+
+
 GetLocationData();
 getData();

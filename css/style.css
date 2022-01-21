@@ -28,7 +28,7 @@ body{
     height: 35px;
 }
 
-.blackstarImg:checked{
+.blackstarFilled{
     background-image: url("../images/Icon\ feather-starfilledFavorited!.png");
     width: 36px;
     height: 35px;
