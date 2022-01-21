@@ -57,6 +57,13 @@ input{
 }
 
 /* card Styling! */
+.card{
+    background-color: white;
+    border-color: #332011;
+    border-radius: 0.5rem;
+    border-width: .15rem;
+}
+
 .cardStyling{
     background-color: #FFFFFF;
     opacity: 0.65;
@@ -73,3 +80,32 @@ input{
     font-size: 3.5rem;
     color: #000000;
 }
+
+.cardDescriptionTxt{
+    font-family: 'Helvetica Neue','Segoe UI';
+    font-size: 1rem;
+    color: black;
+}
+
+.CardTxtDatesAndTime{
+    font-family: 'Helvetica Neue','Segoe UI';
+    font-size: 1.5rem;
+    color: black;
+}
+
+.cardTxtSmol{
+    font-family: 'Helvetica Neue','Segoe UI';
+    font-size: 1rem;
+    color: black;
+}
+
+.cardTxtDataTypes{
+    font-family: 'Helvetica Neue','Segoe UI';
+    font-size: 1.25rem;
+    color: black;
+}
+
+.marginBtmZero{
+    margin-bottom: 0px;
+}
+

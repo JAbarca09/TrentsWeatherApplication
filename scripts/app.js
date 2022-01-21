@@ -5,7 +5,7 @@
 //Set up your GitHub branches and complete your Azure setup, provide a link and complete all your fetches!
 
 let weatherData = [];
-
+import GetLocationData from "./geolocation.js";
 //tidy data will only contain the data that I need!
 
 function getData() {
@@ -110,5 +110,5 @@ function getData() {
             // }
         })
 }
-
+GetLocationData();
 getData();
