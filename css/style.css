@@ -1,14 +1,29 @@
-.backgroundImg{
+/* .backgroundImg{
     background-image: url("../images/hurricane-ridge-7.30.16-18-of-77.png");
     background-size: cover;
     position: cover;
     height: 100vh;
+} */
+
+body{
+    background-image: url("../images/hurricane-ridge-7.30.16-18-of-77.png");
+    
 }
 
 .starImg{
     background-image: url("../images/Icon\ feather-star.png");
     width: 89px;
     height: 85px;
+}
+
+.filledStarImg{
+    background-image: url("../images/Icon\ feather-starFilled.png");
+    width: 89px;
+    height: 85px;
+}
+
+.offcanvas{
+    transition: transform .1s ease-in-out;
 }
 
 input{
@@ -57,17 +72,21 @@ input{
 }
 
 /* card Styling! */
-.card{
+
+.cardStyling{
+    opacity: 100%;
     background-color: rgba(255, 255, 255, 0.598);
     border-color: #332011;
     border-radius: 0.5rem;
     border-width: .15rem;
 }
 
-/* .cardStyling{
-    background-color: #FFFFFF;
-    opacity: 100%;
-} */
+.smallerCardStyling{
+    background-color: rgba(255, 255, 255, 0.598);
+    border-color: #6a9bd2bb;
+    border-radius: 1rem;
+    border-width: .25rem;
+}
 
 .cardLrgTxt{
     font-family: 'Helvetica Neue','Segoe UI';
@@ -120,3 +139,13 @@ input{
     margin-bottom: 0px;
 }
 
+/* Smaller cards under the main one  */
+
+
+.smallerCardTitles{
+    font-family: 'Helvetica Neue','Segoe UI';
+    font-size: 2rem;
+    font-weight: 350;
+    color: black;
+    opacity: 100% !important;
+}
