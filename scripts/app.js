@@ -83,110 +83,204 @@ let weatherCall_city_pt2 = "?q=";
 //call without information api.openweathermap.org/data/2.5/forecast?q={city name}&units=imperial&appid=
 //http://api.openweathermap.org/data/2.5/forecast?q={cityname}&units=imperial&appid=96b8d0dddf7a72fe527ea78d49c9586b;
 let weatherData = [];
+let forecastData = [];
+let longitude;
+let latitude;
 let currentDayData = [];
 
-function getDataFiveDayForeCastByCityName(nameOfCity) {
-
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${nameOfCity}&units=imperial&appid=96b8d0dddf7a72fe527ea78d49c9586b`)
-        .then(resp => resp.json())
-        .then(data => {
-            weatherData = data
-            // console.log(weatherData); all the data
-            //state!
-            // console.log(weatherData.city.name); //Stockton
-            // console.log(weatherData.city.country); //US 
-            console.log(weatherData.list[0].main.humidity);//humidity for the first day!
-            console.log(weatherData.list[0].main.pressure);  //pressure for the first day!
-            // console.log(weatherData.list[0].weather[0].description); //description for the first day!
-            // console.log(Math.floor(weatherData.list[0].wind.speed)); //wind speed for the first day!
-            // console.log(weatherData.list[0].visibility); // visibility for the first day!
-
-            //https://www.epochconverter.com/programming/#javascript
-            //https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
-            // console.log(weatherData.city.sunrise); //sunrise
-            // console.log(weatherData.city.sunset);  //sunset
 
 
-            //Save our data into an object to keep things neat!
-            let weatherInfo = {
-                cityName: weatherData.city.name,
-                cityCountry: weatherData.city.country,
-                secondDay: [
-                    { secondDayTemp: weatherData.list[0].main.temp },
-                    { secondDayMin: weatherData.list[0].main.temp_min },
-                    { secondDayMax: weatherData.list[7].main.temp_max },
-                    { secondDaySunrise: weatherData.city.sunrise },
-                    { secondDaySunset: weatherData.city.sunset },
-                    { secondDayVisibility: weatherData.list[0].visibility },
-                    { secondDayWindSpeed: weatherData.list[0].wind.speed },
-                    { secondDayDescription: weatherData.list[0].weather[0].description },
-                    { secondDayPressure: weatherData.list[0].main.pressure },
-                    { secondDayHumidity: weatherData.list[0].main.humidity },
-                    { secondDayFeelsLike: weatherData.list[0].main.feels_like },
-                    { secondDayDate: weatherData.list[0].dt_txt }
-                ],
-                thirdDay: [ 
-                    { thirdDayMinTemp: weatherData.list[8].main.temp_min },
-                    { thirdDayMaxTemp: weatherData.list[16].main.temp_max },
-                    { thirdDayFeelsLike: weatherData.list[8].main.feels_like },
-                    { thirdDayDate: weatherData.list[8].dt_txt }
-                ],
-                fourthDay: [ 
-                    { fourthDayMinTemp: weatherData.list[17].main.temp_min },
-                    { fourthDayMaxTemp: weatherData.list[23].main.temp_max },
-                    { fourthDayFeelsLike: weatherData.list[17].main.feels_like },
-                    { fourthDayDate: weatherData.list[17].dt_txt }
-                ],
-                fifthDay: [ 
-                    { fifthDayMinTemp: weatherData.list[25].main.temp_min },
-                    { fifthDayMaxTemp: weatherData.list[31].main.temp_max },
-                    { fifthDayFeelsLike: weatherData.list[25].main.feels_like },
-                    { fifthDayDate: weatherData.list[25].dt_txt }
-                ],
-                sixthDay: [ 
-                    { sixthDayMinTemp: weatherData.list[32].main.temp_min },
-                    { sixthDayMaxTemp: weatherData.list[39].main.temp_max },
-                    { sixthDayFeelsLike: weatherData.list[32].main.feels_like },
-                    { sixthDayDate: weatherData.list[32].dt_txt }
-                ]
-               
-            };//end of the object
+        //    //day2-6
+        //    day2Min.textContent = Math.floor(weatherInfo.secondDay[1].secondDayMin)+ "°F";
+        //    day2Max.textContent = Math.floor(weatherInfo.secondDay[2].secondDayMax)+ "°F";
 
-           //day2-6
-           day2Min.textContent = Math.floor(weatherInfo.secondDay[1].secondDayMin)+ "°F";
-           day2Max.textContent = Math.floor(weatherInfo.secondDay[2].secondDayMax)+ "°F";
+        //    //day3
+        //    day3Min.textContent = Math.floor(weatherInfo.thirdDay[0].thirdDayMinTemp)+ "°F";
+        //    day3Max.textContent = Math.floor(weatherInfo.thirdDay[1].thirdDayMaxTemp)+ "°F";
 
-           //day3
-           day3Min.textContent = Math.floor(weatherInfo.thirdDay[0].thirdDayMinTemp)+ "°F";
-           day3Max.textContent = Math.floor(weatherInfo.thirdDay[1].thirdDayMaxTemp)+ "°F";
-
-           //day4
-           day4Min.textContent = Math.floor(weatherInfo.fourthDay[0].fourthDayMinTemp)+ "°F";
-           day4Max.textContent = Math.floor(weatherInfo.fourthDay[1].fourthDayMaxTemp)+ "°F";
+        //    //day4
+        //    day4Min.textContent = Math.floor(weatherInfo.fourthDay[0].fourthDayMinTemp)+ "°F";
+        //    day4Max.textContent = Math.floor(weatherInfo.fourthDay[1].fourthDayMaxTemp)+ "°F";
             
-            //day5
-            day5Min.textContent = Math.floor(weatherInfo.fifthDay[0].fifthDayMinTemp)+ "°F";
-            day5Max.textContent = Math.floor(weatherInfo.fifthDay[1].fifthDayMaxTemp)+ "°F";
+        //     //day5
+        //     day5Min.textContent = Math.floor(weatherInfo.fifthDay[0].fifthDayMinTemp)+ "°F";
+        //     day5Max.textContent = Math.floor(weatherInfo.fifthDay[1].fifthDayMaxTemp)+ "°F";
 
-            //day6
-            day6Min.textContent = Math.floor(weatherInfo.sixthDay[0].sixthDayMinTemp)+ "°F";
-            day6Max.textContent = Math.floor(weatherInfo.sixthDay[1].sixthDayMaxTemp)+ "°F";
+        //     //day6
+        //     day6Min.textContent = Math.floor(weatherInfo.sixthDay[0].sixthDayMinTemp)+ "°F";
+        //     day6Max.textContent = Math.floor(weatherInfo.sixthDay[1].sixthDayMaxTemp)+ "°F";
 
-        })//End of the fetch!
-}//End of the function
 
-function getCurrentDayData(nameOfCity){
-    fetch(`api.openweathermap.org/data/2.5/weather?q=${nameOfCity}&units=imperial&APPID=96b8d0dddf7a72fe527ea78d49c9586b`)
+
+function getCurrentCityCoordinates(nameOfCity){
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${nameOfCity}&APPID=8903d3033bcdc5adc4484ce6f5201cfd`)
     .then(resp => resp.json())
     .then(data => {
+        let locationData = {
+            cityName : data.city.name,
+            countryInitials : data.city.country
+        };
+        CityAndCountry.textContent = locationData.cityName + ", " +locationData.countryInitials;
+        longitude = data.city.coord.lon;
+        latitude = data.city.coord.lat; 
+        getCurrentCityData(latitude, longitude);
+    })//end of the fetch
+}//end of the function
 
-    })
-}
+
+
+
+function getCurrentCityData(latitude, longitude){
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,hourly&units=imperial&appid=96b8d0dddf7a72fe527ea78d49c9586b`)
+    .then(resp => resp.json())
+    .then(data => { 
+        forecastData = data
+        // console.log(forecastData.current.weather[0].description)
+        // console.log(forecastData.current.weather[0].icon)
+        let forecastObject = {
+            currentDay: [
+                {currentDayTemp: forecastData.current.temp},
+                {currentDaySunrise: forecastData.daily[0].sunrise},
+                {currentDaySunset: forecastData.daily[0].sunset},
+                {currentDayWindSpeed: forecastData.current.wind_speed},
+                {currentDayFeelsLike: forecastData.current.feels_like},
+                {currentHumidity: forecastData.current.humidity},
+                {currentDayVisibility: forecastData.current.visibility},
+                {currentDayPressure: forecastData.current.pressure},
+                {currentDateDt: forecastData.daily[0].dt},
+                {currentWeatherDesc: forecastData.current.weather[0].description},
+                {currentWeatherIcon: forecastData.current.weather[0].icon},
+                {currentDayMin: forecastData.daily[0].temp.min},
+                {currentDayMax: forecastData.daily[0].temp.max}
+            ],
+
+            secondDay:[
+                {secondDayMin: forecastData.daily[1].temp.min},
+                {secondDayMax: forecastData.daily[1].temp.max},
+                {secondDayIcon: forecastData.daily[1].weather.icon},
+                {secondDayDateDt: forecastData.daily[1].dt}
+            ],
+
+            thirdDay : [
+                {thirdDayMin: forecastData.daily[2].temp.min},
+                {thirdDayMax: forecastData.daily[2].temp.max},
+                {thirdDayIcon: forecastData.daily[2].weather.icon},
+                {thirdDayDateDt: forecastData.daily[2].dt}
+            ],
+
+            fourthDay: [
+                {fourthDayMin: forecastData.daily[3].temp.min},
+                {fourthDayMax: forecastData.daily[3].temp.max},
+                {fourthDayIcon: forecastData.daily[3].weather.icon},
+                {fourthDayDateDt: forecastData.daily[3].dt}
+            ],
+
+            fifthDay : [
+                {fifthDayMin: forecastData.daily[4].temp.min},
+                {fifthDayMax: forecastData.daily[4].temp.max},
+                {fifthDayIcon: forecastData.daily[4].weather.icon},
+                {fifthDayDateDt: forecastData.daily[4].dt}
+
+            ],
+
+            sixthDay: [
+                {sixthDayMin: forecastData.daily[5].temp.min},
+                {sixthDayMax: forecastData.daily[5].temp.max},
+                {sixthDayIcon: forecastData.daily[5].weather.icon},
+                {sixthDayDateDt : forecastData.daily[5].dt}
+
+            ]  
+        }//End of the object
+        //day 1, displaying data!
+        day1Temperature.textContent = Math.floor(forecastObject.currentDay[0].currentDayTemp)+ "°F";
+        let txtDescription = forecastObject.currentDay[9].currentWeatherDesc;
+        day1Description.textContent = txtDescription.toUpperCase();
+        day1Min.textContent = Math.floor(forecastObject.currentDay[11].currentDayMin);
+        day1Max.textContent = Math.floor(forecastObject.currentDay[12].currentDayMax);
+        day1FeelsLike.textContent = Math.floor(forecastObject.currentDay[4].currentDayFeelsLike)+ "°F";
+        day1Humidity.textContent = forecastObject.currentDay[5].currentHumidity+ "%"
+        day1Wind.textContent = Math.round(forecastObject.currentDay[3].currentDayWindSpeed)+ " mph";
+        day1Visibility.textContent = Math.round(forecastObject.currentDay[6].currentDayVisibility/1609)+ " mi"; //meters divided by 1609 converts meters to miles
+        let Pressure = forecastObject.currentDay[7].currentDayPressure*0.0295;
+        day1Pressure.textContent = Pressure.toFixed(2) + " in"; //hPa converted to inches of Mercury!
+
+        let unixTimeStamp = forecastObject.currentDay[8].currentDateDt;
+        let milliseconds = unixTimeStamp * 1000;
+        let dateObject = new Date(milliseconds);
+        let dayDate = dateObject.toLocaleDateString("en-US", {weekday: "long"});
+        let currentMonth = dateObject.toLocaleDateString("en-US", {month: "long"});
+        let currentNumDate = dateObject.toLocaleString("en-US", {day: "numeric"});
+        day1MonthAndDate.textContent = currentMonth + " "+ currentNumDate+",";
+        day1WeekDay.textContent = dayDate;
+        day1Year.textContent = dateObject.toLocaleString("en-US", {year: "numeric"});
+        //converting unix timestamp to for the current day!
+
+        //converting unix timestamp for frontend
+        let sunriseUnix_timestamp = forecastObject.currentDay[1].currentDaySunrise;
+        let sunriseDate = new Date(sunriseUnix_timestamp * 1000);
+        let hours = sunriseDate.getHours();
+        let minutes = sunriseDate.getMinutes();
+        console.log(hours);
+        console.log(minutes);
+        
+
+
+        //day2
+        day2Min.textContent = Math.floor(forecastObject.secondDay[0].secondDayMin)+ "°F";
+        day2Max.textContent = Math.floor(forecastObject.secondDay[1].secondDayMax)+ "°F";
+
+        let unixTimeStamp2 = forecastObject.secondDay[3].secondDayDateDt;
+        let milliseconds2 = unixTimeStamp2 * 1000;
+        let dateObject2 = new Date(milliseconds2);
+        let dayDate2 = dateObject2.toLocaleDateString("en-US", {weekday: "long"});
+        day2Day.textContent = dayDate2;
+
+        //day3
+        day3Min.textContent = Math.floor(forecastObject.thirdDay[0].thirdDayMin)+ "°F";
+        day3Max.textContent = Math.floor(forecastObject.thirdDay[1].thirdDayMax)+ "°F";
+
+        let unixTimeStamp3 = forecastObject.thirdDay[3].thirdDayDateDt;
+        let milliseconds3 = unixTimeStamp3 * 1000;
+        let dateObject3 = new Date(milliseconds3);
+        let dayDate3 = dateObject3.toLocaleDateString("en-US", {weekday: "long"});
+        day3Day.textContent = dayDate3;
+
+        //day4
+        day4Min.textContent = Math.floor(forecastObject.fourthDay[0].fourthDayMin)+ "°F";
+        day4Max.textContent = Math.floor(forecastObject.fourthDay[1].fourthDayMax)+ "°F";
+
+        let unixTimeStamp4 = forecastObject.fourthDay[3].fourthDayDateDt;
+        let milliseconds4 = unixTimeStamp4 * 1000;
+        let dateObject4 = new Date(milliseconds4);
+        let dayDate4 = dateObject4.toLocaleDateString("en-US", {weekday: "long"});
+        day4Day.textContent = dayDate4;
+
+        //day5
+        day5Min.textContent = Math.floor(forecastObject.fifthDay[0].fifthDayMin)+ "°F";
+        day5Max.textContent = Math.floor(forecastObject.fifthDay[1].fifthDayMax)+ "°F";
+
+        let unixTimeStamp5 = forecastObject.fifthDay[3].fifthDayDateDt;
+        let milliseconds5 = unixTimeStamp5 * 1000;
+        let dateObject5 = new Date(milliseconds5);
+        let dayDate5 = dateObject5.toLocaleDateString("en-US", {weekday: "long"});
+        day5Day.textContent = dayDate5;
+
+        //day6
+        day6Min.textContent = Math.floor(forecastObject.sixthDay[0].sixthDayMin)+ "°F";
+        day6Max.textContent = Math.floor(forecastObject.sixthDay[1].sixthDayMax)+ "°F";
+
+        let unixTimeStamp6 = forecastObject.sixthDay[3].sixthDayDateDt;
+        let milliseconds6 = unixTimeStamp6* 1000;
+        let dateObject6 = new Date(milliseconds6);
+        let dayDate6 = dateObject6.toLocaleDateString("en-US", {weekday: "long"});
+        day6Day.textContent = dayDate6;
+
+    })//end of the fetch
+}//end of the function
 
 //Get the five day forecast and the one day forecast!
 searchBtn.addEventListener('click', function(e){
-
-    getDataFiveDayForeCastByCityName(searchCityInputField.value);            
+    getCurrentCityCoordinates(searchCityInputField.value);
 });
 
 favoritesBtn.addEventListener('click', function () {
