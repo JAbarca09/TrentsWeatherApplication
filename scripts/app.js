@@ -300,6 +300,8 @@ let favOn = false;
 favoritesBtn.addEventListener('click', function () {
     //if the button is clicked switch the favorite image with the other
 
+    //If i favorite a city and go to another city the star remains filled it need to check if the next city searched is inside the favorites
+
     if(favOn == true){
         //Needs to be unfavorited
         RemoveFromLocalStorage(searchCityInputField.value);
@@ -313,14 +315,8 @@ favoritesBtn.addEventListener('click', function () {
     }
     favOn = !favOn;
 
-    // if (favoritesBtn.className == "blackstarImg button") {
-    //     favoritesBtn.className = "blackstarFilled button";
-
-    // } else if (favoritesBtn.className == "blackstarFilled button") {
-    //     favoritesBtn.className = "blackstarImg button";
-    // }
 });
 
 
 GetLocationData();
-export{getCurrentCityCoordinates, getCurrentCityData, CityAndCountry}
+export{getCurrentCityCoordinates, getCurrentCityData, CityAndCountry, searchCityInputField}

@@ -1,10 +1,8 @@
-// let favorites = [
-//     'Lodi','Stockton','Tokyo'
-// ]
-let favorites = [];
+
 
 function SaveToLocalStorageByCityName(cityName)
 {
+    let favorites = GetLocalStorage();
     favorites.push(cityName);
     localStorage.setItem('Favorites',JSON.stringify(favorites));
 }
