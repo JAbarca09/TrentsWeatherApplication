@@ -64,6 +64,7 @@ let searchBtn = document.getElementById('searchBtn');
 //imports
 import {GetLocationData, success, error} from "./geolocation.js";
 import CityFavoriteInOffcanvas from "./createElements.js";
+import {SaveToLocalStorageByCityName, GetLocalStorage, RemoveFromLocalStorage} from "./localStorage.js";
 
 //lat and long OneCal current day!  https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
 //
@@ -295,14 +296,29 @@ searchBtn.addEventListener('click', function(e){
     getCurrentCityCoordinates(searchCityInputField.value);
 });
 
+let favOn = false;
 favoritesBtn.addEventListener('click', function () {
     //if the button is clicked switch the favorite image with the other
-    if (favoritesBtn.className == "blackstarImg button") {
+
+    if(favOn == true){
+        //Needs to be unfavorited
+        RemoveFromLocalStorage(searchCityInputField.value);
+        favoritesBtn.className = "blackstarImg button";
+
+    }else{
+        //Needs to be favorited icon full
+        SaveToLocalStorageByCityName(searchCityInputField.value);
         favoritesBtn.className = "blackstarFilled button";
 
-    } else if (favoritesBtn.className == "blackstarFilled button") {
-        favoritesBtn.className = "blackstarImg button";
     }
+    favOn = !favOn;
+
+    // if (favoritesBtn.className == "blackstarImg button") {
+    //     favoritesBtn.className = "blackstarFilled button";
+
+    // } else if (favoritesBtn.className == "blackstarFilled button") {
+    //     favoritesBtn.className = "blackstarImg button";
+    // }
 });
 
 
