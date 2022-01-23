@@ -23,31 +23,37 @@ let day1Visibility = document.getElementById('day1Visibility'); //Ex. 10.2 mi
 let day1Wind = document.getElementById('day1Wind'); //Ex. 4 mph
 let Day1Sunrise = document.getElementById('Day1Sunrise'); //Ex. 7:10 AM
 let Day1Sunset = document.getElementById('Day1Sunset'); //Ex. 5:13 PM
+let currentDayIcon = document.getElementById('currentDayIcon');
 
 //day2
 let day2Day = document.getElementById('day2Day');
 let day2Min = document.getElementById('day2Min');
 let day2Max = document.getElementById('day2Max');
+let day2Icon = document.getElementById('day2Icon');
 
 //day3
 let day3Day = document.getElementById('day3Day');
 let day3Min = document.getElementById('day3Min');
 let day3Max = document.getElementById('day3Max');
+let day3Icon = document.getElementById('day3Icon');
 
 //day4
 let day4Day = document.getElementById('day4Day');
 let day4Min = document.getElementById('day4Min');
 let day4Max = document.getElementById('day4Max');
+let day4Icon = document.getElementById('day4Icon');
 
 //day5
 let day5Day = document.getElementById('day5Day');
 let day5Min = document.getElementById('day5Min');
 let day5Max = document.getElementById('day5Max');
+let day5Icon = document.getElementById('day5Icon');
 
 //day6
 let day6Day = document.getElementById('day6Day');
 let day6Min = document.getElementById('day6Min');
 let day6Max = document.getElementById('day6Max');
+let day6Icon = document.getElementById('day6Icon');
 
 //I HAVE NOT DONE ANY PICTURES YET!!!
 
@@ -82,35 +88,9 @@ let weatherCall_city_pt2 = "?q=";
 //url for the 5 day forecast
 //call without information api.openweathermap.org/data/2.5/forecast?q={city name}&units=imperial&appid=
 //http://api.openweathermap.org/data/2.5/forecast?q={cityname}&units=imperial&appid=96b8d0dddf7a72fe527ea78d49c9586b;
-let weatherData = [];
 let forecastData = [];
 let longitude;
 let latitude;
-let currentDayData = [];
-
-
-
-        //    //day2-6
-        //    day2Min.textContent = Math.floor(weatherInfo.secondDay[1].secondDayMin)+ "°F";
-        //    day2Max.textContent = Math.floor(weatherInfo.secondDay[2].secondDayMax)+ "°F";
-
-        //    //day3
-        //    day3Min.textContent = Math.floor(weatherInfo.thirdDay[0].thirdDayMinTemp)+ "°F";
-        //    day3Max.textContent = Math.floor(weatherInfo.thirdDay[1].thirdDayMaxTemp)+ "°F";
-
-        //    //day4
-        //    day4Min.textContent = Math.floor(weatherInfo.fourthDay[0].fourthDayMinTemp)+ "°F";
-        //    day4Max.textContent = Math.floor(weatherInfo.fourthDay[1].fourthDayMaxTemp)+ "°F";
-            
-        //     //day5
-        //     day5Min.textContent = Math.floor(weatherInfo.fifthDay[0].fifthDayMinTemp)+ "°F";
-        //     day5Max.textContent = Math.floor(weatherInfo.fifthDay[1].fifthDayMaxTemp)+ "°F";
-
-        //     //day6
-        //     day6Min.textContent = Math.floor(weatherInfo.sixthDay[0].sixthDayMinTemp)+ "°F";
-        //     day6Max.textContent = Math.floor(weatherInfo.sixthDay[1].sixthDayMaxTemp)+ "°F";
-
-
 
 function getCurrentCityCoordinates(nameOfCity){
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${nameOfCity}&APPID=8903d3033bcdc5adc4484ce6f5201cfd`)
@@ -126,7 +106,6 @@ function getCurrentCityCoordinates(nameOfCity){
         getCurrentCityData(latitude, longitude);
 
 
-
     })//end of the fetch
 }//end of the function
 
@@ -138,6 +117,7 @@ function getCurrentCityData(latitude, longitude){
     .then(resp => resp.json())
     .then(data => { 
         forecastData = data
+        // console.log(forecastData.daily[1].weather[0].icon);
         let forecastObject = {
             currentDay: [
                 {currentDayTemp: forecastData.current.temp},
@@ -153,35 +133,40 @@ function getCurrentCityData(latitude, longitude){
                 {currentWeatherIcon: forecastData.current.weather[0].icon},
                 {currentDayMin: forecastData.daily[0].temp.min},
                 {currentDayMax: forecastData.daily[0].temp.max},
-                {DtRn: forecastData.current.dt}
+                {DtRn: forecastData.current.dt},
+                {currentDayIcon: forecastData.daily[0].weather[0].icon}
             ],
 
             secondDay:[
                 {secondDayMin: forecastData.daily[1].temp.min},
                 {secondDayMax: forecastData.daily[1].temp.max},
                 {secondDayIcon: forecastData.daily[1].weather.icon},
-                {secondDayDateDt: forecastData.daily[1].dt}
+                {secondDayDateDt: forecastData.daily[1].dt},
+                {secondDayIcon: forecastData.daily[1].weather[0].icon}
             ],
 
             thirdDay : [
                 {thirdDayMin: forecastData.daily[2].temp.min},
                 {thirdDayMax: forecastData.daily[2].temp.max},
                 {thirdDayIcon: forecastData.daily[2].weather.icon},
-                {thirdDayDateDt: forecastData.daily[2].dt}
+                {thirdDayDateDt: forecastData.daily[2].dt},
+                {thirdDayIcon: forecastData.daily[2].weather[0].icon}
             ],
 
             fourthDay: [
                 {fourthDayMin: forecastData.daily[3].temp.min},
                 {fourthDayMax: forecastData.daily[3].temp.max},
                 {fourthDayIcon: forecastData.daily[3].weather.icon},
-                {fourthDayDateDt: forecastData.daily[3].dt}
+                {fourthDayDateDt: forecastData.daily[3].dt},
+                {fourthDayIcon: forecastData.daily[3].weather[0].icon}
             ],
 
             fifthDay : [
                 {fifthDayMin: forecastData.daily[4].temp.min},
                 {fifthDayMax: forecastData.daily[4].temp.max},
                 {fifthDayIcon: forecastData.daily[4].weather.icon},
-                {fifthDayDateDt: forecastData.daily[4].dt}
+                {fifthDayDateDt: forecastData.daily[4].dt},
+                {fifthDayIcon: forecastData.daily[4].weather[0].icon}
 
             ],
 
@@ -189,8 +174,8 @@ function getCurrentCityData(latitude, longitude){
                 {sixthDayMin: forecastData.daily[5].temp.min},
                 {sixthDayMax: forecastData.daily[5].temp.max},
                 {sixthDayIcon: forecastData.daily[5].weather.icon},
-                {sixthDayDateDt : forecastData.daily[5].dt}
-
+                {sixthDayDateDt : forecastData.daily[5].dt},
+                {sixthDayIcon: forecastData.daily[5].weather[0].icon}
             ]  
         }//End of the object
         //day 1, displaying data!
@@ -205,7 +190,7 @@ function getCurrentCityData(latitude, longitude){
         day1Visibility.textContent = Math.round(forecastObject.currentDay[6].currentDayVisibility/1609)+ " mi"; //meters divided by 1609 converts meters to miles
         let Pressure = forecastObject.currentDay[7].currentDayPressure*0.0295;
         day1Pressure.textContent = Pressure.toFixed(2) + " in"; //hPa converted to inches of Mercury!
-
+        currentDayIcon.src = "https://openweathermap.org/img/wn/" + forecastObject.currentDay[14].currentDayIcon + ".png";
 
         //converting unix timestamp to for the current day!
         let unixTimeStamp = forecastObject.currentDay[8].currentDateDt;
@@ -250,6 +235,7 @@ function getCurrentCityData(latitude, longitude){
         //day2
         day2Min.textContent = Math.floor(forecastObject.secondDay[0].secondDayMin)+ "°F";
         day2Max.textContent = Math.floor(forecastObject.secondDay[1].secondDayMax)+ "°F";
+        day2Icon.src = "https://openweathermap.org/img/wn/" + forecastObject.secondDay[4].secondDayIcon + ".png";
 
         let unixTimeStamp2 = forecastObject.secondDay[3].secondDayDateDt;
         let milliseconds2 = unixTimeStamp2 * 1000;
@@ -260,6 +246,7 @@ function getCurrentCityData(latitude, longitude){
         //day3
         day3Min.textContent = Math.floor(forecastObject.thirdDay[0].thirdDayMin)+ "°F";
         day3Max.textContent = Math.floor(forecastObject.thirdDay[1].thirdDayMax)+ "°F";
+        day3Icon.src = "https://openweathermap.org/img/wn/" + forecastObject.thirdDay[4].thirdDayIcon + ".png";
 
         let unixTimeStamp3 = forecastObject.thirdDay[3].thirdDayDateDt;
         let milliseconds3 = unixTimeStamp3 * 1000;
@@ -270,6 +257,7 @@ function getCurrentCityData(latitude, longitude){
         //day4
         day4Min.textContent = Math.floor(forecastObject.fourthDay[0].fourthDayMin)+ "°F";
         day4Max.textContent = Math.floor(forecastObject.fourthDay[1].fourthDayMax)+ "°F";
+        day4Icon.src = "https://openweathermap.org/img/wn/" + forecastObject.fourthDay[4].fourthDayIcon + ".png";
 
         let unixTimeStamp4 = forecastObject.fourthDay[3].fourthDayDateDt;
         let milliseconds4 = unixTimeStamp4 * 1000;
@@ -280,6 +268,7 @@ function getCurrentCityData(latitude, longitude){
         //day5
         day5Min.textContent = Math.floor(forecastObject.fifthDay[0].fifthDayMin)+ "°F";
         day5Max.textContent = Math.floor(forecastObject.fifthDay[1].fifthDayMax)+ "°F";
+        day5Icon.src = "https://openweathermap.org/img/wn/" + forecastObject.fifthDay[4].fifthDayIcon + ".png";
 
         let unixTimeStamp5 = forecastObject.fifthDay[3].fifthDayDateDt;
         let milliseconds5 = unixTimeStamp5 * 1000;
@@ -290,6 +279,7 @@ function getCurrentCityData(latitude, longitude){
         //day6
         day6Min.textContent = Math.floor(forecastObject.sixthDay[0].sixthDayMin)+ "°F";
         day6Max.textContent = Math.floor(forecastObject.sixthDay[1].sixthDayMax)+ "°F";
+        day6Icon.src = "https://openweathermap.org/img/wn/" + forecastObject.sixthDay[4].sixthDayIcon + ".png";
 
         let unixTimeStamp6 = forecastObject.sixthDay[3].sixthDayDateDt;
         let milliseconds6 = unixTimeStamp6* 1000;
