@@ -11,3 +11,6 @@ export default function CityFavoriteInOffcanvas(){
     injectHere.appendChild(div);
 }
 
+
+//I also need a function to remove the created element!
+

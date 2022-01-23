@@ -61,11 +61,9 @@ let day6Icon = document.getElementById('day6Icon');
 let favoritesBtn = document.getElementById('favoritesBtn');
 let searchBtn = document.getElementById('searchBtn');
 
-
-
 //imports
-import GetLocationData from "./geolocation.js";
-import createFavoriteInOffcanvas from "./createElements.js";
+import {GetLocationData, success, error} from "./geolocation.js";
+import CityFavoriteInOffcanvas from "./createElements.js";
 
 //lat and long OneCal current day!  https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
 //
@@ -91,6 +89,8 @@ let weatherCall_city_pt2 = "?q=";
 let forecastData = [];
 let longitude;
 let latitude;
+// let lat; 
+// let lon;
 
 function getCurrentCityCoordinates(nameOfCity){
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${nameOfCity}&APPID=8903d3033bcdc5adc4484ce6f5201cfd`)
@@ -307,4 +307,4 @@ favoritesBtn.addEventListener('click', function () {
 
 
 GetLocationData();
-
+export{getCurrentCityCoordinates, getCurrentCityData, CityAndCountry}
