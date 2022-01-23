@@ -118,12 +118,15 @@ function getCurrentCityCoordinates(nameOfCity){
     .then(data => {
         let locationData = {
             cityName : data.city.name,
-            countryInitials : data.city.country
+            countryInitials : data.city.country,
         };
         CityAndCountry.textContent = locationData.cityName + ", " +locationData.countryInitials;
         longitude = data.city.coord.lon;
         latitude = data.city.coord.lat; 
         getCurrentCityData(latitude, longitude);
+
+
+
     })//end of the fetch
 }//end of the function
 
@@ -135,8 +138,6 @@ function getCurrentCityData(latitude, longitude){
     .then(resp => resp.json())
     .then(data => { 
         forecastData = data
-        // console.log(forecastData.current.weather[0].description)
-        // console.log(forecastData.current.weather[0].icon)
         let forecastObject = {
             currentDay: [
                 {currentDayTemp: forecastData.current.temp},
@@ -151,7 +152,8 @@ function getCurrentCityData(latitude, longitude){
                 {currentWeatherDesc: forecastData.current.weather[0].description},
                 {currentWeatherIcon: forecastData.current.weather[0].icon},
                 {currentDayMin: forecastData.daily[0].temp.min},
-                {currentDayMax: forecastData.daily[0].temp.max}
+                {currentDayMax: forecastData.daily[0].temp.max},
+                {DtRn: forecastData.current.dt}
             ],
 
             secondDay:[
@@ -204,6 +206,8 @@ function getCurrentCityData(latitude, longitude){
         let Pressure = forecastObject.currentDay[7].currentDayPressure*0.0295;
         day1Pressure.textContent = Pressure.toFixed(2) + " in"; //hPa converted to inches of Mercury!
 
+
+        //converting unix timestamp to for the current day!
         let unixTimeStamp = forecastObject.currentDay[8].currentDateDt;
         let milliseconds = unixTimeStamp * 1000;
         let dateObject = new Date(milliseconds);
@@ -213,17 +217,35 @@ function getCurrentCityData(latitude, longitude){
         day1MonthAndDate.textContent = currentMonth + " "+ currentNumDate+",";
         day1WeekDay.textContent = dayDate;
         day1Year.textContent = dateObject.toLocaleString("en-US", {year: "numeric"});
-        //converting unix timestamp to for the current day!
+        //working on the current date
 
-        //converting unix timestamp for frontend
+        //I looked at both dt's for Stockton Moscow and their values essentially the same, i can't differentiate between time zones!
+        let currentDayUnixTimeStamp = forecastObject.currentDay[13].DtRn;
+        let currentDayDate = new Date(currentDayUnixTimeStamp * 1000);
+        let currentDayHours = currentDayDate.getHours();
+        let currentDayMinutes = currentDayDate.getMinutes();
+        currentTime.textContent = currentDayHours + ":" +currentDayMinutes;
+
+
+
+        //coverting unix timestmp for the sunrise
         let sunriseUnix_timestamp = forecastObject.currentDay[1].currentDaySunrise;
         let sunriseDate = new Date(sunriseUnix_timestamp * 1000);
-        let hours = sunriseDate.getHours();
-        let minutes = sunriseDate.getMinutes();
-        console.log(hours);
-        console.log(minutes);
-        
+        let sunriseHours = sunriseDate.getHours();
+        let sunriseMinutes = sunriseDate.getMinutes();
+        //The time right now is in 24 hour time! Convert it to 12 hour time format!
+        sunriseHours = ((sunriseHours + 11) %12 + 1);
+        Day1Sunrise.textContent = sunriseHours+":"+sunriseMinutes+ " AM";
 
+
+        //converting unix timestamp for the sunset!
+        let sunsetUnix_timestamp = forecastObject.currentDay[2].currentDaySunset;
+        let sunsetDate = new Date(sunsetUnix_timestamp * 1000);
+        let sunsetHours = sunsetDate.getHours();
+        let sunsetMinutes = sunsetDate.getMinutes();
+        //Convert the 24 hour time to 12 hour format
+        sunsetHours = ((sunsetHours + 11) %12 + 1);
+        Day1Sunset.textContent = sunsetHours+":"+sunsetMinutes+ " PM";
 
         //day2
         day2Min.textContent = Math.floor(forecastObject.secondDay[0].secondDayMin)+ "°F";
