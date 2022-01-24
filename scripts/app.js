@@ -70,19 +70,6 @@ import {SaveToLocalStorageByCityName, GetLocalStorage, RemoveFromLocalStorage} f
 //
 // put in a city https://api.openweathermap.org/data/2.5/forecast?q=Stockton&APPID=8903d3033bcdc5adc4484ce6f5201cfd
 
-//function for fetching
-//variables for one call with latitude and longitude
-let urlOneCall_pt1 = "https://api.openweathermap.org/data/2.5/onecall";
-let lat= '?lat=';
-let lon = '&lon=';
-let apiKey = '&appid=';
-let cityName = '?city=';
-
-
-//url for one day, the current day!
-let weatherCall_pt1 = "https://api.openweathermap.org/data/2.5/weather";
-let weatherCall_city_pt2 = "?q=";
-
 
 //url for the 5 day forecast
 //call without information api.openweathermap.org/data/2.5/forecast?q={city name}&units=imperial&appid=
@@ -94,10 +81,12 @@ let latitude;
 // let lon;
 
 let TheCityName;
+let Country;
 function getCurrentCityCoordinates(nameOfCity){
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${nameOfCity}&APPID=8903d3033bcdc5adc4484ce6f5201cfd`)
     .then(resp => resp.json())
     .then(data => {
+        Country = data.city.country;
         TheCityName = data.city.name;
         let locationData = {
             cityName : data.city.name,
@@ -108,9 +97,12 @@ function getCurrentCityCoordinates(nameOfCity){
         latitude = data.city.coord.lat; 
         getCurrentCityData(latitude, longitude);
 
+
+
         //refer to the city's name from the object's data!
+        //This is for seeing if another city should have its icon on or off f
         let favOn;
-        let cityLowerCase = locationData.cityName.toLowerCase();
+        let cityLowerCase = searchCityInputField.value.toLowerCase();
         //Do not forget to pass in the name of the city in a lowercase format other it will always be false!!!
         favOn = CheckIfTheLocationIsFavorited(cityLowerCase);
         console.log(favOn);
@@ -121,6 +113,8 @@ function getCurrentCityCoordinates(nameOfCity){
             //The star image is not filled!
             favoritesBtn.className = "blackstarImg button";
         }
+        favOn = !favOn;
+
     })//end of the fetch
 }//end of the function
 
@@ -304,45 +298,60 @@ function getCurrentCityData(latitude, longitude){
     })//end of the fetch
 }//end of the function
 
+
+
 //Get the five day forecast and the one day forecast!
 searchBtn.addEventListener('click', function(e){
-    getCurrentCityCoordinates(searchCityInputField.value);
+    let UserInput = searchCityInputField.value.toLowerCase()
+    getCurrentCityCoordinates(UserInput);
+
 });
 
-//The user input or the city entered made lower case and saved into userInput
-let UserInput = searchCityInputField.value.toLowerCase();
-//isFavoritedOn is a boolean that checks if the userinput is inside 
-favoritesBtn.addEventListener('click', function(e){
-    let isFavoritedOn = CheckIfTheLocationIsFavorited(UserInput);
-    //if the button is clicked switch the favorite image with the other
-    //If i favorite a city and go to another city the star remains filled it need to check if the next city searched is inside the favorites
 
-    if(isFavoritedOn == true){
+
+
+
+
+let favOn;
+favoritesBtn.addEventListener('click', function(e){
+    let userInput = searchCityInputField.value.toLowerCase();
+    favOn = CheckIfTheLocationIsFavorited(userInput);
+    if(favOn == true){
         //Needs to be unfavorited
         RemoveFromLocalStorage(searchCityInputField.value.toLowerCase());
+        CheckIfTheLocationIsFavorited(searchCityInputField.value.toLowerCase());
         favoritesBtn.className = "blackstarImg button";
-
-    }else if(isFavoritedOn == false){
+        document.getElementById(searchCityInputField.value).remove();
+    }else{
         //Needs to be favorited icon full
         SaveToLocalStorageByCityName(searchCityInputField.value.toLowerCase());
+        CheckIfTheLocationIsFavorited(searchCityInputField.value.toLowerCase());
+        let CityNCountry;
+        CityNCountry = TheCityName +", " +Country; 
+        //Add the city
+        CityFavoriteInOffcanvas(CityNCountry,searchCityInputField.value);
         favoritesBtn.className = "blackstarFilled button";
     }
-    isFavoritedOn = !isFavoritedOn;
-
+    favOn = !favOn;
 });
 
-//Check if the city is already in the local storage!
+
+
+
 
 //Check if the city is already favorited, pass in the city's name in a format all lowercase!
-function CheckIfTheLocationIsFavorited(UserInput){
+function CheckIfTheLocationIsFavorited(cityNameEntered){
     //Get the favorites from local storage!
     const favorites = GetLocalStorage();
     //Console.logs all the favorites that are in the array so we know what is inside!
     console.log(JSON.stringify(favorites));
     //Check if the user input is included in the array and returns a boolean
-    return favorites.includes(UserInput.toLowerCase());
+    //Ensure the variable passed is also has .toLowerCase applied to it!
+    return favorites.includes(cityNameEntered.toLowerCase());
 }
 
 
 GetLocationData();
 export{getCurrentCityCoordinates, getCurrentCityData, CityAndCountry, searchCityInputField}
+
+// localStorage.clear();

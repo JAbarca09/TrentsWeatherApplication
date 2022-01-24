@@ -17,11 +17,13 @@ function SaveToLocalStorage(favorites){
 //     const localStorageItem = localStorage.getItem('Favorites');
 //     localStorageItem != null ? favorites = JSON.parse(localStorageItem) : favorites = [];
 // }
+let localStorageData = localStorage.getItem('Favorites');
 
 function GetLocalStorage(){
     let localStorageData = localStorage.getItem('Favorites');
     //Check if the data even exists
     //If there is no existing data then return nothing!
+
     if(localStorageData == null){
         return [];
     }else{
@@ -34,7 +36,7 @@ function GetLocalStorage(){
 function RemoveFromLocalStorage(cityName){
     const favorites = GetLocalStorage();
     let cityIndex = favorites.indexOf(cityName);
-
+    
     //found cityname in array favorites
     favorites.splice(cityIndex,1);
     SaveToLocalStorage(favorites);
@@ -47,4 +49,5 @@ function RemoveFromLocalStorage(cityName){
 //console.log(people);
 //SaveToLocalStorage();
 
-export {SaveToLocalStorageByCityName, GetLocalStorage, RemoveFromLocalStorage}
+export {SaveToLocalStorageByCityName, GetLocalStorage, RemoveFromLocalStorage, localStorageData}
+
