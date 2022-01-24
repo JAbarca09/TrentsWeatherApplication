@@ -1,7 +1,7 @@
 //enable geolocation on macs
 import {CityAndCountry, getCurrentCityCoordinates,getCurrentCityData} from './app.js';
 
-
+//If the user give's us access to their geolocation then...
 function success(position){
     console.log(position)
     //save the coordinates and pass them in
@@ -9,16 +9,15 @@ function success(position){
     let lon = position.coords.longitude;
     //I cannot get the user's city and country data because that is in the  getCurrentCityCoordinates fetch!
     //I have no access to that data just by using longitude and latitude
-    CityAndCountry.textContent = 'User Location';
+    CityAndCountry.textContent = 'User Location'; //One call does not return a city name or country!
     getCurrentCityData(lat, lon);
 }
 
+//The user does not allow geolocation
 function error(err){
     console.warn(err);
-    //run a default location, do a random location from the following!
-    let rCities = ['Stockton', 'Sydney', 'Tokyo', 'Moscow', 'London', 'Michoacan', 'Jalisco', 'Modesto', 'Lodi', 'Sacramento', 'Tracy'];
-    let randomCity = Math.floor((Math.random() * rCities.length));
-    getCurrentCityCoordinates(rCities[randomCity]);
+    //run a default location!
+    getCurrentCityCoordinates('Stockton');
 }
 
 let options = {

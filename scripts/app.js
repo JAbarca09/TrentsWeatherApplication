@@ -93,10 +93,12 @@ let latitude;
 // let lat; 
 // let lon;
 
+let TheCityName;
 function getCurrentCityCoordinates(nameOfCity){
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${nameOfCity}&APPID=8903d3033bcdc5adc4484ce6f5201cfd`)
     .then(resp => resp.json())
     .then(data => {
+        TheCityName = data.city.name;
         let locationData = {
             cityName : data.city.name,
             countryInitials : data.city.country,
@@ -106,7 +108,19 @@ function getCurrentCityCoordinates(nameOfCity){
         latitude = data.city.coord.lat; 
         getCurrentCityData(latitude, longitude);
 
-
+        //refer to the city's name from the object's data!
+        let favOn;
+        let cityLowerCase = locationData.cityName.toLowerCase();
+        //Do not forget to pass in the name of the city in a lowercase format other it will always be false!!!
+        favOn = CheckIfTheLocationIsFavorited(cityLowerCase);
+        console.log(favOn);
+        if(favOn){
+            //The star image is filled when the city is on the favorites list!
+            favoritesBtn.className = "blackstarFilled button";
+        }else{
+            //The star image is not filled!
+            favoritesBtn.className = "blackstarImg button";
+        }
     })//end of the fetch
 }//end of the function
 
@@ -118,7 +132,6 @@ function getCurrentCityData(latitude, longitude){
     .then(resp => resp.json())
     .then(data => { 
         forecastData = data
-        // console.log(forecastData.daily[1].weather[0].icon);
         let forecastObject = {
             currentDay: [
                 {currentDayTemp: forecastData.current.temp},
@@ -296,26 +309,39 @@ searchBtn.addEventListener('click', function(e){
     getCurrentCityCoordinates(searchCityInputField.value);
 });
 
-let favOn = false;
-favoritesBtn.addEventListener('click', function () {
+//The user input or the city entered made lower case and saved into userInput
+let UserInput = searchCityInputField.value.toLowerCase();
+//isFavoritedOn is a boolean that checks if the userinput is inside 
+favoritesBtn.addEventListener('click', function(e){
+    let isFavoritedOn = CheckIfTheLocationIsFavorited(UserInput);
     //if the button is clicked switch the favorite image with the other
-
     //If i favorite a city and go to another city the star remains filled it need to check if the next city searched is inside the favorites
 
-    if(favOn == true){
+    if(isFavoritedOn == true){
         //Needs to be unfavorited
-        RemoveFromLocalStorage(searchCityInputField.value);
+        RemoveFromLocalStorage(searchCityInputField.value.toLowerCase());
         favoritesBtn.className = "blackstarImg button";
 
-    }else{
+    }else if(isFavoritedOn == false){
         //Needs to be favorited icon full
-        SaveToLocalStorageByCityName(searchCityInputField.value);
+        SaveToLocalStorageByCityName(searchCityInputField.value.toLowerCase());
         favoritesBtn.className = "blackstarFilled button";
-
     }
-    favOn = !favOn;
+    isFavoritedOn = !isFavoritedOn;
 
 });
+
+//Check if the city is already in the local storage!
+
+//Check if the city is already favorited, pass in the city's name in a format all lowercase!
+function CheckIfTheLocationIsFavorited(UserInput){
+    //Get the favorites from local storage!
+    const favorites = GetLocalStorage();
+    //Console.logs all the favorites that are in the array so we know what is inside!
+    console.log(JSON.stringify(favorites));
+    //Check if the user input is included in the array and returns a boolean
+    return favorites.includes(UserInput.toLowerCase());
+}
 
 
 GetLocationData();
