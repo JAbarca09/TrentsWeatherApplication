@@ -1,5 +1,5 @@
 //Jesse Abarca
-//1/21/22
+//1/23/22
 //Weather Sprint-Day4
 //Submit your entire project, provide a link to your site, and submit your prototype you were using for the project!
 
@@ -67,7 +67,6 @@ import CityFavoriteInOffcanvas from "./createElements.js";
 import {SaveToLocalStorageByCityName, GetLocalStorage, RemoveFromLocalStorage} from "./localStorage.js";
 
 //lat and long OneCal current day!  https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-//
 // put in a city https://api.openweathermap.org/data/2.5/forecast?q=Stockton&APPID=8903d3033bcdc5adc4484ce6f5201cfd
 
 
