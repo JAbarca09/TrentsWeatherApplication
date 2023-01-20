@@ -185,5 +185,15 @@ hr{
     .col-12.col-sm-4.col-md-3.col-lg-2 {
         display: flex;
         justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .col-8.mt-4.text-center {
+        padding-left: 20px
     }
 }
