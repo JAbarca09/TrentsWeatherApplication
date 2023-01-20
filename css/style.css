@@ -180,3 +180,10 @@ hr{
     margin-left: 50px;
     
 }
+
+@media screen and (max-width: 575px) {
+    .col-12.col-sm-4.col-md-3.col-lg-2 {
+        display: flex;
+        justify-content: center;
+    }
+}
