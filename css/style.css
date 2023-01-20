@@ -1,6 +1,8 @@
 body{
     background-image: url("../images/hurricane-ridge-7.30.16-18-of-77.png");
     background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     height: 100%;
     width: 100%;
 }
@@ -43,7 +45,7 @@ input{
     padding-top: 5px;
     padding-left: 20px;
     height: 50px;
-    width: 600px;
+    width: 80%;
 }
 
 
@@ -99,6 +101,7 @@ input{
     border-color: #6a9bd2bb;
     border-radius: 1rem;
     border-width: .25rem;
+    width: 11.5rem;
 }
 
 .cardLrgTxt{
@@ -157,7 +160,7 @@ input{
 
 .smallerCardTitles{
     font-family: 'Helvetica Neue','Segoe UI';
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 350;
     color: black;
     opacity: 100% !important;
@@ -177,4 +180,31 @@ hr{
     opacity: 100% !important;
     margin-left: 50px;
     
+}
+
+@media screen and (max-width: 575px) {
+    .col-12.col-sm-4.col-md-3.col-lg-3.col-xl-2 {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .col-8.mt-4.text-center {
+        padding-left: 20px
+    }
+
+    .smallerCardStyling {
+        width: 13rem;
+    }
+}
+
+@media screen and (min-width: 575px)  and (max-width: 1007px) {
+    input {
+        margin-bottom: 20px;
+    }
 }
