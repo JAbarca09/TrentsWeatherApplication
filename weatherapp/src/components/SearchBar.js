@@ -15,8 +15,8 @@ const SearchBar = () => {
   return (
     <div className={classes.container}>
       <img src={emptyStar} alt="empty star" />
-      <form className={classes.searchBar} onSubmit={handleFormSubmit}>
-        <input type="text" placeholder="Search..." ref={cityQueryRef} />
+      <form onSubmit={handleFormSubmit}>
+        <input className={classes.searchBar} type="text" placeholder="Search..." ref={cityQueryRef} />
         <button type="submit">Search</button>
       </form>
     </div>
