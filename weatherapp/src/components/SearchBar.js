@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
-// import classes from "./SearchBar.module.css";
+import classes from "./SearchBar.module.css";
+import emptyStar from "../assets/Icon_feather_star.png";
+// import fullStar from "../assets/Icon_feather_starFilled.png";
 
 const SearchBar = () => {
   const cityQueryRef = useRef();
@@ -11,12 +13,13 @@ const SearchBar = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleFormSubmit}>
+    <div className={classes.container}>
+      <img src={emptyStar} alt="empty star" />
+      <form className={classes.searchBar} onSubmit={handleFormSubmit}>
         <input type="text" placeholder="Search..." ref={cityQueryRef} />
         <button type="submit">Search</button>
       </form>
-    </>
+    </div>
   );
 };
 

@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    justify-content: center;
+    position: relative;  
+}
+
+.container > img {
+    position: absolute;
+    left: 0;
+}
+
