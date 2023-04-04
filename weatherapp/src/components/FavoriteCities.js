@@ -1,0 +1,5 @@
+FavoriteCities = () => {
+
+};
+
+export default FavoriteCities;
