@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.module.css";
 
+import SearchBar from "./components/SearchBar";
+
 const App = () => {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <>
+      <SearchBar />
+    </>
   );
 }
 
