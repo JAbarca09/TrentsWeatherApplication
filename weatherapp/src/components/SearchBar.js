@@ -13,8 +13,9 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
+    <div className={classes.container}>
       <img
+        width="70px"
         src={emptyStar}
         alt="empty star"
       />
