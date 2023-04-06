@@ -27,11 +27,19 @@
     padding: 5px 10px;
 }
 
-/* Mobile first */
+/* Breakpoints going from small screens to larger ones! */
 @media only screen and (max-width: 320px) {
   .container {
     display: grid;
     grid-template-columns: 0.9fr 3fr;
     background-color: orange;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .container {
+    display: grid;
+    grid-template-columns: 0.9fr 3fr;
+    background-color: green;
   }
 }
