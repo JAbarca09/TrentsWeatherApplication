@@ -36,10 +36,10 @@
   }
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (min-width: 321px) and (max-width: 425px) {
   .container {
     display: grid;
-    grid-template-columns: 0.9fr 3fr;
+    grid-template-columns: 0.9fr 3fr 0.9fr;
     background-color: green;
   }
 }
