@@ -30,9 +30,14 @@
 
 .button {
   color: white;
-  background-color: #555555;
+  background-color: #000000;
   border: none;
   padding: 5px 10px;
+}
+
+.button:hover {
+  background-color: #555555;
+  cursor: pointer;
 }
 
 /* Breakpoints going from small screens to larger ones! */
