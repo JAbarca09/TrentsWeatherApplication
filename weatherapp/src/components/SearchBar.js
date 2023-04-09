@@ -24,7 +24,9 @@ const SearchBar = () => {
           placeholder="Search..."
           ref={cityQueryRef}
         />
-        <button className={classes.button} type="submit">Search</button>
+        <button className={classes.button} type="submit">
+          Search
+        </button>
       </form>
     </div>
   );
