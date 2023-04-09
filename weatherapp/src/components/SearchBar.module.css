@@ -63,6 +63,7 @@
   .container {
     display: grid;
     grid-template-columns: 0.2fr 1fr;
+    padding-right: 5%;
     background-color: green;
   }
 
