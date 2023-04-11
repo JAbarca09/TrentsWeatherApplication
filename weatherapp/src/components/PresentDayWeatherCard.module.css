@@ -1,5 +1,18 @@
-.mainCard {
-    width: 500px;
-    height: 500px;
-    background-color: red;
+.mainWeatherCard {
+  width: 70%;
+  height: 250px;
+  background-color: rgb(195, 27, 195);
+  margin: 0 auto;
+}
+
+.firstRow {
+  display: flex;
+  justify-content: center;
+}
+
+/* Breakpoints going from small screens to larger ones! */
+@media only screen and (max-width: 375px) {
+    .mainWeatherCard {
+        width: 100%;
+    }
 }
