@@ -10,10 +10,10 @@ recieves props regarding the current weather conditions and time!
   return (
     <div className={classes.mainWeatherCard}>
       <div className={classes.firstRow}>
-        <p>Stockton, US</p>
-        <img width="50px" height="50px" src={emptyFavoriteStar} alt="placeholder" />
-        <p>57 &deg;F</p>
-        <img width="50px" height="50px" src={fullFavoriteStar} alt="City Favorited" />
+        <p className={classes.stateAndCityTxt}>Stockton, US</p>
+        <img className={classes.weatherIcon} width="50px" height="50px" src={emptyFavoriteStar} alt="weather icon" />
+        <p className={classes.temperatureTxt}>57 &deg;F</p>
+        <img className={classes.starIcon} src={fullFavoriteStar} alt="City Favorited" />
       </div>
     </div>
   );

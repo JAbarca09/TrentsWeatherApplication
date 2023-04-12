@@ -13,9 +13,33 @@
   justify-content: center;
 }
 
+.stateAndCityTxt {
+  font-family: "Helvetica Neue", "Segoe UI";
+  color: #000000;
+  margin: 0;
+}
+
+.temperatureTxt {
+  margin: 0;
+}
+
 /* Breakpoints going from small screens to larger ones! */
 @media only screen and (max-width: 375px) {
-    .mainWeatherCard {
-        width: 100%;
-    }
+  .mainWeatherCard {
+    width: 100%;
+  }
+
+  .stateAndCity {
+    font-size: 20px;
+  }
+
+  /* Remove the weather icon */
+  .weatherIcon {
+    display: none;
+  }
+
+  .starIcon {
+    width: 25px;
+    height: 25px;
+  }
 }
