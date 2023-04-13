@@ -34,15 +34,15 @@
 
   .firstRow {
     display: flex;
-    justify-content: flex-start;
-  }
+    justify-content:space-between;
+  } 
 
   .stateAndCityTxt {
-    font-size: 23px;
+    font-size: 24px;
   }
 
   .temperatureTxt {
-    font-size: 23px;
+    font-size: 24px;
   }
 
   /* Remove the weather icon */
@@ -51,7 +51,7 @@
   }
 
   .starIcon {
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
   }
 }
