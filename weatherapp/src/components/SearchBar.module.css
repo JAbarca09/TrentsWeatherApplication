@@ -1,0 +1,100 @@
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    background-color: #fff;
+    padding: 0px 15px;
+}
+
+.search-bar input {
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 20px 20px;
+    font-size: 20px;
+}
+
+::placeholder {
+    color: #333;
+}
+
+.search-bar button svg {
+  width: 30px;
+}
+
+.search-bar button {
+    border: 0;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    background-color: brown;
+    cursor: pointer;
+}
+
+.visuallyHidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+
+@media (max-width: 475px) {
+
+    .empty-star {
+        margin-right: 5px;
+    }
+
+    .search-bar {
+        padding: 0 0 0 7px;
+    }
+
+    .search-bar input {
+        padding: 0;
+    }
+}
+/* 
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1563px;
+    }
+}
+ */
