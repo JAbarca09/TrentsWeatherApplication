@@ -24,7 +24,7 @@
 }
 
 /* Breakpoints going from small screens to larger ones! */
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 359px) {
   .mainWeatherCard {
     width: 83%;
     padding-right: 15px;
@@ -34,8 +34,8 @@
 
   .firstRow {
     display: flex;
-    justify-content:space-between;
-  } 
+    justify-content: space-between;
+  }
 
   .stateAndCityTxt {
     font-size: 24px;
@@ -43,6 +43,7 @@
 
   .temperatureTxt {
     font-size: 24px;
+    padding-left: 8%;
   }
 
   /* Remove the weather icon */
@@ -51,7 +52,7 @@
   }
 
   .starIcon {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
   }
 }
