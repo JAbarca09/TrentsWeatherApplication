@@ -56,3 +56,36 @@
     height: 26px;
   }
 }
+
+@media only screen and (min-width: 360px) and (max-width: 376px) {
+  .mainWeatherCard {
+    width: 83%;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 4px;
+  }
+
+  .firstRow {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .stateAndCityTxt {
+    font-size: 28px;
+  }
+
+  .temperatureTxt {
+    font-size: 28px;
+    padding-left: 10%;
+  }
+
+  /* Remove the weather icon */
+  .weatherIcon {
+    display: none;
+  }
+
+  .starIcon {
+    width: 30px;
+    height: 30px;
+  }
+}
